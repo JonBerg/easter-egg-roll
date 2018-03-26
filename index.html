@@ -1,0 +1,310 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Skats</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    :root {
+      --position-x: 0px;
+      --position-y: 0px;
+    }
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: rgba(255,255,255,0);
+    }
+    div img {
+      width: 100%;
+    }
+    body {
+      background: #daf7fe;
+    }
+    .game-canva {
+      position: relative;
+      max-width: 1200px;
+      margin: 50px auto;
+      background: url("img/Fons.png") no-repeat;
+      background-size: 101%;
+      overflow: hidden;
+      border: 2px solid;
+      background-position: bottom;
+    }
+    .messageclose {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      height: 47px;
+      line-height: 50px;
+      text-align: center;
+      background: #ea0202;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 25px;
+      letter-spacing: 1px;
+      border-radius: 0px 0px 20px 20px;
+    }
+    .messages {
+      position: relative;
+      width: 30%;
+      min-width: 350px;
+      z-index: 2;
+      text-align: center;
+      box-shadow: 0 4px 17px 1px rgba(0, 0, 0, .17);
+      background: white;
+      padding: 15px 30px 70px;
+      z-index: 100;
+      border-radius: 21px;
+    }
+    .message-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, .5);
+      z-index: 100;
+      display: -ms-flexbox;
+      display: none;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    .show {
+      display: flex;
+    }
+    .bunny {
+      height: 100px;
+    }
+    .bunny img {
+      width: 320px;
+      position: absolute;
+      bottom: -13px;
+      left: -10px;
+    }
+    .board {
+      position: relative;
+      background: url("img/Delis.png") no-repeat -56px 16px;
+      background-size: 500px;
+      margin: 60px 0 10px 200px;
+      height: 115px;
+      display: flex;
+    }
+    .info {
+      z-index: 1;
+      max-width: 400px;
+      text-align: center;
+      font-size: 18px;
+      margin-left: auto;
+      margin-top: 25px;
+      margin-right: 10vw;
+    }
+    .egg {
+      width: 40px;
+      -webkit-animation-duration: 3s;
+      animation-fill-mode: forwards;
+      transform: rotate(0deg);
+      /* animation-name: roll-3m; */
+      margin: -31px 2px;
+      align-self: flex-start;
+      position: absolute;
+      top: 24px;
+      left: 36px;
+      height: 60px;
+    }
+    }
+    .egg img {
+      width: 100%;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin: 30px 10vw 20px;
+      max-width: 400px;
+      margin-left: auto;
+
+    }
+    .roll-egg {
+      padding: 10px 30px;
+      color: white;
+      font-size: 30px;
+      letter-spacing: 1px;
+      background: #ea0202;
+      border: 3px solid #c20202;
+      border-radius: 31px;
+      cursor: pointer;
+    }
+    .roll-egg:hover {
+     background: #de0404;
+    }
+    .roll-1m {
+      -webkit-animation-name: roll-1m;  /* Safari 4.0 - 8.0 */
+      animation-name: roll-1m;
+      animation-duration: 3s;
+    }
+    @keyframes roll-1m {
+      100%  {
+        top: 90px;
+        left: 450px;
+        transform: rotate(800deg);
+      }
+    }
+
+    .roll-2m {
+      -webkit-animation-name: roll-2m;  /* Safari 4.0 - 8.0 */
+      animation-name: roll-2m;
+      animation-duration: 3s;
+    }
+    @keyframes roll-2m {
+      100%  {
+        top: 90px;
+        left: 550px;
+        transform: rotate(700deg);
+      }
+    }
+
+    .roll-3m {
+      -webkit-animation-name: roll-3m;  /* Safari 4.0 - 8.0 */
+      animation-name: roll-3m;
+      animation-duration: 3s;
+    }
+    @keyframes roll-3m {
+      100%  {
+        top: 90px;
+        left: 630px;
+        transform: rotate(1690deg);
+      }
+    }
+
+    .roll-4m {
+      -webkit-animation-name: roll-4m;  /* Safari 4.0 - 8.0 */
+      animation-name: roll-4m;
+      animation-duration: 1.6s;
+    }
+    @media (min-width: 1200px) {
+      .board {
+        background-size: 500px;
+        margin: 60px 0 10px 300px;
+
+      }
+      .bunny img {
+        width: 370px;
+        bottom: 2px;
+        left: 5px;
+      }
+      .egg {
+          width: 50px;
+          height: 68px;
+      }
+      .board {
+        height: 155px;
+        background-size: 550px;
+      }
+    }
+  </style>
+</head>
+<body class='Easter-egg-rolling'>
+  <div class="main-layout">
+
+  <div class="game-canva">
+    <div class="info">
+    Oliņ boliņ! Lieldienas ir klāt!<br>
+    Spēlē spēli un saņem atlaidi līdz pat 20% žurnālu abonēšanai.
+    Katram 10 spēles dalībniekam pārsteiguma balvas no Izdevniecības Dienas Žurnāli.
+    </div>
+    <div class="button">
+      <button class="roll-egg">Ripināt olu</button>
+    </div>
+    <div class="bunny"><img src="img/zakis.png"></div>
+    <div class="board">
+      <div class="egg">
+        <img src="img/ola-1.png">
+      </div></div>
+  </div>
+  <div class="message-overlay">
+    <div class="messages">
+      <h2>APSVEICU!</h2>
+      <p class="discount-text"></p>
+      <p>kods: <span class="discount-code"><span></p>
+      <a href="#" class="messageclose">Izslēgt</a>
+    </div>
+  </div>
+
+  </div>
+</body>
+<script>
+var random_egg = Math.floor((Math.random() * 7) + 1);
+$(".egg img").attr('src', "img/ola-"+random_egg+".png");
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1);
+      if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+  }
+  return "";
+}
+
+  function show_message(discount) {
+
+    $(".message-overlay").addClass("show");
+    $( "button.roll-egg" ).text('Ienāc rīt');
+    switch(discount) {
+        case 1:
+            $( ".discount-text" ).text('Tu esi aizripinājis olu 5m tālu un laimējis 5% atlaidi žurnālu abonēšanai');
+            $( ".discount-code" ).text('code1');
+            break;
+        case 2:
+            $( ".discount-text" ).text('Tu esi aizripinājis olu 7m tālu un laimējis 7% atlaidi žurnālu abonēšanai');
+            $( ".discount-code" ).text('code2');
+            break;
+        case 3:
+            $( ".discount-text" ).text('Tu esi aizripinājis olu 10m tālu un laimējis 10% atlaidi žurnālu abonēšanai');
+            $( ".discount-code" ).text('code3');
+            break;
+    }
+    //win-text
+  }
+
+  $( ".messageclose" ).on( "click", function() {
+    $(".message-overlay").removeClass("show");
+  });
+  //coockies
+  var countdown = 100;
+
+  //current timestamp
+  var now   = Date.parse(new Date());
+
+  //ready should be stored in your cookie
+  var ready = Date.parse(new Date (now + countdown  * 1000)); // * 1000 to get ms
+  $( ".roll-egg" ).on( "click", function() {
+      setCookie("ready", ready);
+  });
+
+  var timeout=getCookie("ready");
+  setCookie("Time", now);
+  var message=getCookie("Time");
+
+  var now  = Date.parse(new Date());
+  if (now >= timeout) {
+    $( ".roll-egg" ).on( "click", function() {
+      var random_distace = Math.floor((Math.random() * 3) + 1);
+      $( ".egg" ).addClass('roll-'+random_distace+'m');
+      setTimeout(function(){ show_message(random_distace)}, 3000);
+      setCookie("ready", ready);
+    });
+  }else {
+    $( "button.roll-egg" ).text('Ienāc rīt');
+  }
+
+</script>
+</html>
