@@ -9,6 +9,9 @@ div img {
 body {
   background: #daf7fe;
 }
+a {
+  color: #ea0202;
+}
 .game-canva {
   position: relative;
   max-width: 1200px;

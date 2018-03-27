@@ -61,7 +61,7 @@ function show_message(discount) {
 }
 var code = getCookie("code");
 //coockies
-var countdown = 1000;
+var countdown = 1440;
 //current timestamp
 var now   = Date.parse(new Date());
 //ready should be stored in your cookie
