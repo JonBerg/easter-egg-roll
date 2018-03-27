@@ -3,6 +3,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Lieldienu spēle</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery.md5.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class='Easter-egg-rolling' >
@@ -35,7 +36,7 @@
         <div class="messages">
           <h2>APSVEICU!</h2>
           <p class="discount-text"></p>
-          <p>kods: <span class="discount-code"><span></p>
+          <p>kods: <span id="copy-code" class="discount-code"></span><button class="copy-button" onclick="copy('copy-code')">Kopēt</button> </p>
           <p>Nokopē kodu un ievadi olā redzamo atlaides kodu <a href="http://ekiosks.lv/">vietnē ekiosks.lv</a> un abonē jebkuru žurnālu!
           Katram desmitajam abonentam dāvanā kāds no žurnālgrāmatu komplektiem pēc izvēles:
           </p>
@@ -49,5 +50,5 @@
   </div>
   </div>
 </body>
- <script src="easter-roll.js"></script> 
+ <script src="easter-roll.js"></script>
 </html>
