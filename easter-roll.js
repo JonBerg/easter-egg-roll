@@ -25,9 +25,6 @@ var code2 = Base64.decode('WFZTMTA=');
 var code3 = Base64.decode('TEJNMTU=');
 var code4 = Base64.decode('SURaMjA=');
 
-console.log(code1);
-
-
 function show_message(discount) {
   $(".message-overlay").addClass("show");
   $( ".button button" ).text('Ienāc rīt').removeClass('roll-egg').addClass('try-agen-later');
