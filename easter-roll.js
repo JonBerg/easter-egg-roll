@@ -20,9 +20,10 @@ function show_message(discount) {
   $(".message-overlay").addClass("show");
   $( ".button button" ).text('Ienāc rīt').removeClass('roll-egg').addClass('try-agen-later');
 
-  var code1 ='gfgf';
-  var code2 ='fdhd';
-  var code3 ='dfjd';
+  var code1 ='LDN5';
+  var code2 ='XVS10';
+  var code3 ='LBM15';
+  var code4 ='IDZ20';
 
   switch(discount) {
       case 1:
@@ -31,12 +32,12 @@ function show_message(discount) {
           setCookie("code", code1);
           break;
       case 2:
-          $( ".discount-text" ).text('Tu esi aizripinājis olu 7m tālu un laimējis 7% atlaidi žurnālu abonēšanai');
+          $( ".discount-text" ).text('Tu esi aizripinājis olu 10m tālu un laimējis 10% atlaidi žurnālu abonēšanai');
           $( ".discount-code" ).text(code2);
           setCookie("code", code2);
           break;
       case 3:
-          $( ".discount-text" ).text('Tu esi aizripinājis olu 10m tālu un laimējis 10% atlaidi žurnālu abonēšanai');
+          $( ".discount-text" ).text('Tu esi aizripinājis olu 15m tālu un laimējis 15% atlaidi žurnālu abonēšanai');
           $( ".discount-code" ).text(code3);
           setCookie("code", code3);
           break;
